@@ -21,6 +21,9 @@ st.write('The name of the Smoothie will be: ', name_on_order)
 cnx=st.connection("snowflake")
 session=cnx.session()
 
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
 #session = get_active_session()
 #my_dataframe = session.table("smoothies.public.orders").filter(col("ORDER_FILLED")==0).collect()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
